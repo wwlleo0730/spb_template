@@ -1,0 +1,85 @@
+server: 
+  port: 8888
+  tomcat:
+    max-threads: 500 # Maximum amount of worker threads.
+    min-spare-threads: 50 # Minimum amount of worker threads
+
+spring: 
+  application:
+    name: template
+  profiles:
+    active: dev
+  jackson: 
+    serialization: 
+      WRITE_DATES_AS_TIMESTAMPS: true  #output json as timestamp
+      fail-on-empty-beans: false
+#  cloud: 
+#    inetutils: 
+#      preferredNetworks: 
+#        - 10.0                  #ignore docker ip
+  jpa: 
+    show-sql: false
+    hibernate:
+      ddl-auto : none
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: true
+        format_sql: true
+ 
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+     health:
+        show-details: ALWAYS
+
+
+# feign 配置
+#feign:
+#  hystrix:
+#    enabled: true
+#  httpclient:
+#    enabled: true
+#  client:
+#    config:
+#      feignName:
+#        connectTimeout: 10000
+#        readTimeout: 10000
+#  compression:
+#    request:
+#      enabled: true
+#    response:
+#      enabled: true
+# hystrix If you need to use ThreadLocal bound variables in your RequestInterceptor`s
+# you will need to either set the thread isolation strategy for Hystrix to `SEMAPHORE or disable Hystrix in Feign.
+#hystrix:
+#  threadpool: 
+#    default:
+#      coreSize: 500
+#      maxQueueSize: 1000
+#      queueSizeRejectionThreshold: 500
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          strategy: SEMAPHORE
+#          thread:
+#            timeoutInMilliseconds: 60000
+#  shareSecurityContext: true
+
+#请求处理的超时时间       
+#ribbon:
+#  eureka:
+#    enabled: true
+#  ReadTimeout: 10000
+#  ConnectTimeout: 10000
+#  MaxAutoRetries: 0
+#  MaxAutoRetriesNextServer: 1
+#  eager-load:
+#    enabled: true
