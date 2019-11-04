@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wwl.common.utils.Result;
+import com.wwl.common.utils.ResultWapper;
 import com.wwl.template.service.PersonSay;
 
 import io.swagger.annotations.ApiOperation;
@@ -27,6 +28,7 @@ public class Hello {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	@PostMapping("/sayto/{name}")
 	@ApiOperation("say hello to someone")
 	public Result<String> helloto(@PathVariable("name") String name){

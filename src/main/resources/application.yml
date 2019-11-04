@@ -1,3 +1,6 @@
+info:
+  version: @project.version@
+
 server: 
   port: 8888
   tomcat:
