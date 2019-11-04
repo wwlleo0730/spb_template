@@ -1,5 +1,9 @@
+# app name and build version updated during build process from Maven properties.
 info:
-  version: @project.version@
+  app:
+    name: @project.artifactId@
+  build:
+    version: @project.version@
 
 server: 
   port: 8888

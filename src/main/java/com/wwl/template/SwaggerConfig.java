@@ -38,7 +38,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Slf4j
 public class SwaggerConfig implements WebMvcConfigurer {
 	
-	@Value("${info.version}")
+	@Value("${info.build.version}")
 	public String version;
 
 	@Override
