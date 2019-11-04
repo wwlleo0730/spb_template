@@ -6,6 +6,7 @@ import static java.util.Collections.singletonList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import io.swagger.annotations.ApiOperation;
+import lombok.val;
+import lombok.extern.slf4j.Slf4j;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -32,17 +35,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 @ConfigurationProperties(prefix = "swagger-doc")
+@Slf4j
 public class SwaggerConfig implements WebMvcConfigurer {
-
-//	@Bean
-//	public Docket createRestApi() {
-//		return new Docket(DocumentationType.SWAGGER_2)
-//				.apiInfo(apiInfo()).select()
-//				.apis(RequestHandlerSelectors
-//						.withMethodAnnotation(ApiOperation.class))
-//				.paths(PathSelectors.any())
-//				.build();
-//	}
+	
+	@Value("${info.version}")
+	public String version;
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -66,7 +63,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("APIS").description("APIS").termsOfServiceUrl("APIS")
-				.version("1.0.0-SNAPSHOT").build();
+				.version(this.version).build();
 	}
 
 	private List<ApiKey> security() {
