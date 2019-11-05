@@ -122,6 +122,7 @@
 			<version>1.5.22</version>
 		</dependency>
 
+		<!-- hex & encrypt lib -->
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcprov-jdk15on</artifactId>
@@ -135,7 +136,6 @@
 		<!-- 动态日志 <dependency> <groupId>org.jolokia</groupId> <artifactId>jolokia-core</artifactId> 
 			</dependency> -->
 		<!--添加 spring cloud jar end -->
-
 
 	</dependencies>
 
