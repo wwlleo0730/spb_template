@@ -19,7 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 */
 @SuppressWarnings("rawtypes")
 @ControllerAdvice
-@Slf4j
 public class ResponseDataHandler extends AbstractMappingJacksonResponseBodyAdvice {@Override
 	
 	/**
@@ -29,8 +28,7 @@ public class ResponseDataHandler extends AbstractMappingJacksonResponseBodyAdvic
 			MediaType contentType , MethodParameter returnType,
 			ServerHttpRequest arg3, ServerHttpResponse arg4) {
 		
-		// check wether ResultWapper func
-		
+		// check ResultWapper annotation
 		if (returnType.getMethod().isAnnotationPresent(ResultWapper.class)) {
 			Object raw = bodyContainer.getValue();
 			Result result = Result.success(raw);
