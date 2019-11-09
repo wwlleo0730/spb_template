@@ -5,41 +5,48 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import cn.hutool.core.date.DatePattern;
+
 
 public class DateUtil {
 	
-private static final ThreadLocal<SimpleDateFormat> threadLocal = new ThreadLocal<SimpleDateFormat>();
+	private static final ThreadLocal<SimpleDateFormat> threadLocal = new ThreadLocal<SimpleDateFormat>();
 	
-	public static final String DEFAULT_PATTERN_DAY = "yyyy-MM-dd";
-	public static final String DEFAULT_PATTERN_DAY_TIME = "yyyy-MM-dd HH:mm:ss";
+	public static final String DEFAULT_PATTERN_DAY = DatePattern.NORM_DATE_PATTERN;
+	public static final String DEFAULT_PATTERN_DAY_TIME = DatePattern.NORM_DATETIME_PATTERN;
 	
 
 	private static final Object object = new Object();
 	
-	public static Integer getCurrentYear(){
-		Calendar cal = Calendar.getInstance();
-		return cal.get(Calendar.YEAR);
+	/**
+	 * @return 今年
+	 */
+	public static Integer currentYear(){
+		return cn.hutool.core.date.DateUtil.thisYear();
 	}
 	
-	public static Integer getCurrentMonth(){
-		Calendar cal = Calendar.getInstance();
-		return cal.get(Calendar.MONTH)+1;
+	/**
+	 * @return 当前真实月份，不是从0开始
+	 */
+	public static Integer currentMonth(){
+		return cn.hutool.core.date.DateUtil.thisMonth()+1;
 	}
-
-	public static String getCurrentDateStr() {
+	
+	/**
+	 * 格式 yyyy-MM-dd
+	 * @return 当前日期，形如：2019-01-01
+	 */
+	public static String currentDateStr() {
 		Date date = new Date();
 		return DateToString(date, DEFAULT_PATTERN_DAY);
 	}
 	
-	public static Date getCurrentDate() {
-		Date date = new Date();
-		String str = DateToString(date, DEFAULT_PATTERN_DAY);
-		return StringToDate(str);
-	}
-	
-	public static String getCurrentDateTimeStr() {
-		Date date = new Date();
-		return DateToString(date, DEFAULT_PATTERN_DAY_TIME);
+	/**
+	 * 格式 yyyy-MM-dd
+	 * @return 当前日期，形如：2019-01-01 12:12:12
+	 */
+	public static String currentDateTimeStr() {
+		return cn.hutool.core.date.DateUtil.now();
 	}
 
 	/**
@@ -107,14 +114,7 @@ private static final ThreadLocal<SimpleDateFormat> threadLocal = new ThreadLocal
 	 * @return
 	 */
 	public static String DateToString(Date date, String pattern) {
-		String dateString = null;
-		if (date != null) {
-			try {
-				dateString = getDateFormat(pattern).format(date);
-			} catch (Exception e) {
-			}
-		}
-		return dateString;
+		return cn.hutool.core.date.DateUtil.format(date, pattern);
 	}
 
 	public static int getIntervalDays(String date, String otherDate) {

@@ -41,6 +41,13 @@
 	</dependencyManagement>
 
 	<dependencies>
+
+		<!-- hutool -->
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>5.0.3</version>
+		</dependency>
 		<!-- web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -67,15 +74,12 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
-
 		<!--Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
-
 		<!-- commons lib -->
-
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
