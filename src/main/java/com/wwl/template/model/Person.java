@@ -11,13 +11,15 @@ import lombok.Setter;
 @Table
 @Getter
 @Setter
-public class Person {
-	
-	@Id
-	private Integer pk;
+public class Person extends BaseEntity {
 	
 	private String name;
 	
 	private Integer age;
+	
+	/**
+	 * fk station
+	 */
+	private Integer station_id;
 
 }
