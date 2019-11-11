@@ -36,5 +36,9 @@ CREATE TABLE user
 );
 
 ----user data
-insert into user(id,name,station_id) values (23,'jordan',1);
-insert into user(id,name,station_id) values (24,'kobe',3);
+insert into user(id,name,age,station_id) values (1,23,'jordan',1);
+insert into user(id,name,age,station_id) values (2,24,'kobe',2);
+insert into user(id,name,age,station_id) values (3,18,'jim',3);
+insert into user(id,name,age,station_id) values (4,28,'ken',4);
+insert into user(id,name,age,station_id) values (5,29,'bob',1);
+insert into user(id,name,age,station_id) values (6,37,'haha',3);
