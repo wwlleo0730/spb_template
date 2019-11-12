@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.wwl.template.model.Person;
+
 import lombok.extern.slf4j.Slf4j;
 
 @RunWith(SpringRunner.class)
@@ -19,11 +21,18 @@ public class PersonDaoTest {
 	
 	@Test
 	public void testFindAll() {
-		
-		personDao.findAll().forEach( t ->{
+		personDao.findAll().forEach( t->{
 			log.info(t.toString());
 		});
-		
+	}
+	
+	@Test
+	public void testInsert() {
+		Person person = new Person();
+		person.setAge(50);
+		person.setName("Jhon");
+		person.setStation_id(2);
+		this.personDao.save(person);
 	}
 
 }

@@ -141,6 +141,12 @@
 			</dependency> -->
 		<!--添加 spring cloud jar end -->
 
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.5</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -150,6 +156,7 @@
 		<!-- 必须的plugin -->
 		<plugins>
 
+			<!-- archtype -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-archetype-plugin</artifactId>
@@ -175,6 +182,46 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<!-- testcase -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>false</skipTests>
+					<argLine>${argLine} -Dfile.encoding=UTF-8</argLine>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.5</version>
+				<configuration>
+					<skip>false</skip>
+					<includes>
+						<include>com/wwl/template/*</include>
+					</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<configuration>
+							<outputDirectory>${basedir}/target/coverage-reports</outputDirectory>
+						</configuration>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 
 		<!--指定资源文件目录和java源代码目录 -->
