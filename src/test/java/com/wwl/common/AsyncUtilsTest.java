@@ -42,5 +42,21 @@ public class AsyncUtilsTest {
 		 */
 
 	}
+	
+	@Test
+	public void testAsyncCallThenApply() {
+
+		String result = AsyncUtils.run(()->{
+			try {
+				log.info("call some client API");
+				Thread.sleep(new Random().nextInt(3000)); // make the call return after 3 seconds
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			return "hello";
+		}).thenApply( s-> s+" world").join();
+		
+		log.info("result : {} " , result);
+	}
 
 }

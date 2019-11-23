@@ -1,6 +1,6 @@
 package com.wwl.common.utils;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.Date;
 
 import org.junit.Test;
 
@@ -15,6 +15,11 @@ public class DateUtilTest {
 		log.info("thismonth: {}",DateUtil.currentMonth());
 		log.info("currentDateStr: {}" , DateUtil.currentDateStr());
 		log.info("currentDateTimeStr: {}" , DateUtil.currentDateTimeStr());
+		
+		log.info(DateUtil.DateToString(DateUtil.dayOffset(new Date() , 2)));
+		log.info(DateUtil.DateToString(DateUtil.monthOffset(new Date() , 2)));
+		log.info(DateUtil.DateToString(DateUtil.yearOffset(new Date() , 2)));
+		
 	}
 
 }
