@@ -34,6 +34,7 @@ public class BaseEntity implements Persistable<Integer> {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@JsonIgnore
 	@Transient // DATAJPA-622
 	public boolean isNew() {
 		return null == getId();
@@ -41,7 +42,7 @@ public class BaseEntity implements Persistable<Integer> {
 
 	@Override
 	public Integer getId() {
-		return null;
+		return this.id;
 	}
 
 	@Version
@@ -54,6 +55,7 @@ public class BaseEntity implements Persistable<Integer> {
 
 	@Column(name = "created_date")
 	@CreatedDate
+	@JsonIgnore
 	private Date createdDate = new Date();
 
 	@Column(name = "last_modified_by")
@@ -63,6 +65,7 @@ public class BaseEntity implements Persistable<Integer> {
 
 	@Column(name = "last_modified_date")
 	@LastModifiedDate
+	@JsonIgnore
 	private Date lastModifiedDate;
 
 	@Override
