@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-@Service
+@Service(value = "BubbleSort")
 public class BubbleSort implements ISort {
 
 	@Override

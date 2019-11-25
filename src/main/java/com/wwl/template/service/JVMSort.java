@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-@Service
+@Service(value = "JVMSort")
 public class JVMSort implements ISort {
 
 	@Override

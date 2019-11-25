@@ -34,5 +34,19 @@ public class Person extends BaseEntity {
 	public String myUnitName() {
 		return this.getStation().getUnit().getName();
 	}
+	
+	/**
+	 *    可以离职的业务逻辑，属于内聚的业务，放在model内部。
+	 *    如果年龄大于40岁，不可以离职。  
+	 *   
+	 * @return
+	 */
+	public boolean canLeave() {
+		
+		if(this.getAge() > 40) {
+			return false;
+		} else return true;
+		
+	}
 
 }

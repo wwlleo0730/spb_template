@@ -1,6 +1,7 @@
 package com.wwl.template.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,17 @@ public class PersonController {
 	@ApiOperation(value = "all persons")
 	public List<Person> allPersons() {
 		return personDao.findAll();
+	}
+	
+	@GetMapping("/personsCantFired")
+	@ApiOperation(value = "persons cant fired")
+	public List<Person> personsCantFired() {
+		
+		List<Person> olds = personDao.findAll().parallelStream()
+			.filter( t -> t.canLeave() == false )
+			.collect(Collectors.toList());
+		
+		return olds;
 	}
 	
 }

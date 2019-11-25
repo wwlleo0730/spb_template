@@ -1,5 +1,3 @@
----test data
-
 ----unit data
 insert into unit (id,name) values (1 , 'develop');
 
