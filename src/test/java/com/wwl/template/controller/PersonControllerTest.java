@@ -1,15 +1,26 @@
 package com.wwl.template.controller;
 
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.wwl.template.BaseSpringMvcTest;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultMatcher;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
 import com.wwl.template.infrastructure.PersonDao;
 
-
-public class PersonControllerTest extends BaseSpringMvcTest {
+@RunWith(SpringRunner.class)
+@WebMvcTest(PersonController.class)
+public class PersonControllerTest  {
 	
 	@Autowired
     private MockMvc mvc;
@@ -18,10 +29,11 @@ public class PersonControllerTest extends BaseSpringMvcTest {
 	private PersonDao personDao; 
 	
 	@Test
-	public void testAllPersons() {
-		
-		System.out.println("1");
-		
+	public void testAllPersons() throws Exception {
+		mvc.perform(get("/hello"))
+			.andExpect(content().json("{\"code\":200,\"data\":\"hello\",\"message\":\"success\"}"))
+			.andExpect(status().isOk());
 	}
+	
 
 }
