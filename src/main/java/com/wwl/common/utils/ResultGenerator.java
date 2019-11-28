@@ -13,10 +13,10 @@ public class ResultGenerator {
 	private static final String DEFAULT_SUCCESS_MESSAGE = "success";
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private static Result genResult(Object data) {
+	private static Result genResult(Object content) {
 		Result result = Result.newInstance();
 		result.setCode(HttpStatus.OK.value());
-		result.setData(data);
+		result.setContent(content);
 		result.setMessage(DEFAULT_SUCCESS_MESSAGE);
 		return result;
 	}
@@ -25,7 +25,7 @@ public class ResultGenerator {
 	private static Result genResult(Integer code, String message) {
 		Result result = Result.newInstance();
 		result.setCode(code);
-		result.setData(null);
+		result.setContent(null);
 		result.setMessage(message);
 		if (log.isDebugEnabled()) {
 			log.debug("generate rest result:{}", result);

@@ -1,29 +1,27 @@
 package com.wwl.common.utils;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import io.swagger.annotations.ApiModel;
+import lombok.Data;
 
 /**
  * 统一API响应结果封装
  */
-@Getter
-@Setter
-@ToString
+@Data
+@ApiModel(value="api返回体")
 public class Result<T> {
 
-	private int code;
-	private T data;
+	private Integer code;
+	private T content;
 	private String message;
 	
 	public Result() {
 
 	}
 	
-	public Result(T data) {
+	public Result(T content) {
         this.code = 200;
         this.message = "success";
-        this.data = data;
+        this.content = content;
     }
 
 	@SuppressWarnings("rawtypes")

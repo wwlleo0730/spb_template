@@ -1,4 +1,4 @@
-package com.wwl.common.config;
+package com.wwl.common.spring.config;
 
 
 import javax.servlet.ServletException;

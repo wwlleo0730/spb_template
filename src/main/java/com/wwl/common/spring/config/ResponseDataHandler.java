@@ -1,4 +1,4 @@
-package com.wwl.common.config;
+package com.wwl.common.spring.config;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
