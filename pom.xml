@@ -199,9 +199,6 @@
 				<version>0.8.5</version>
 				<configuration>
 					<skip>false</skip>
-					<includes>
-						<include>com/wwl/template/**</include>
-					</includes>
 				</configuration>
 				<executions>
 					<execution>
