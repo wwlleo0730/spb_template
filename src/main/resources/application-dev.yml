@@ -10,8 +10,15 @@ spring:
    password:
    driverClassName: org.h2.Driver
    data: classpath:h2data/data.sql
+#    url: jdbc:oracle:thin:@192.168.8.84:1522:XE
+#    username: system
+#    password: oracle
+#    driverClassName: oracle.jdbc.driver.OracleDriver
+#    data: classpath:h2data/data.sql
+   
  jpa:
    database-platform: org.hibernate.dialect.H2Dialect
+#   database-platform: org.hibernate.dialect.Oracle10gDialect
    hibernate:
      ddl-auto: update
    properties:

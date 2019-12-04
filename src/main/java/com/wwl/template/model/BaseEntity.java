@@ -31,7 +31,7 @@ public class BaseEntity implements Persistable<Integer> {
 
 	@Id
 	@Column(name = "id", nullable = false)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
 	@JsonIgnore
