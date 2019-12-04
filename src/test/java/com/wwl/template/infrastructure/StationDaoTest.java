@@ -12,7 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringRunner.class)
 @Slf4j
 @DataJpaTest
-@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:h2data/data.sql")
+@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, 
+			scripts = "classpath:h2data/data.sql")
 public class StationDaoTest {
 	
 	@Autowired
@@ -24,12 +25,13 @@ public class StationDaoTest {
 		stationDao.findAll().forEach( t-> {
 			
 			log.info("======================================");
+			log.info("=====");
 			log.info("station name : {}" , t.getName() );
 			
 			t.activePersons().forEach( t1 -> {
 				log.info("   -------- {}" , t1.getName());
 			});
-			
+			log.info("=====");
 			log.info("=======================================");
 		});
 	}

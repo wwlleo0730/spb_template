@@ -237,5 +237,13 @@
 		</testResources>
 
 	</build>
+	
+	<distributionManagement>
+        <repository>
+            <id>bluetron-extranet</id>
+            <name>bluetron-extranet</name>
+            <url>http://10.201.1.6:8083/repository/maven-public/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
