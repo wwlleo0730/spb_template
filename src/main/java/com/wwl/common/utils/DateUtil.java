@@ -195,6 +195,13 @@ public class DateUtil {
 	public static Date dayOffset(Date date, int offset) {
 		return cn.hutool.core.date.DateUtil.offset(date, DateField.DAY_OF_YEAR, offset);
 	}
+	
+	/**
+	 * 返回指定秒数位移后的日期
+	 */
+	public static Date secondOffset(Date date, int offset) {
+		return cn.hutool.core.date.DateUtil.offset(date, DateField.SECOND, offset);
+	}
 
 	/**
 	 * 根据月份获得工作日
